@@ -1,0 +1,9 @@
+joblib
+seaborn
+pandas
+numpy
+scipy
+matplotlib
+openpyxl
+regex
+typing
