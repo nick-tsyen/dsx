@@ -16,11 +16,12 @@ The package can be can be used in the following setup:
 - Installation using Pip:
 
 
+```
     pip install dsx
-
+```
 
 ## Documentation
-Full Documentation Site: [https://nicdatalab.com/static/pages/docs_dsx/index.html](https://nicdatalab.com/static/pages/docs_dsx/index.html)
+Full Documentation Site: [https://dataninja.ml/static/pages/docs_dsx/index.html](https://dataninja.ml/static/pages/docs_dsx/index.html)
 
 
 ## 1. Core Module: "ds_utils"
@@ -51,26 +52,26 @@ Some of the key features of the DataFrame utility functions are as following:
 ### 1.1 Usage
 
 Below is example codes for importing the module:
-
+```Python
     from dsx.ds_utils import *
-
+```
 
 There are 2 categories of methods in **dsx's** classes, which are to be called in different ways:
 - **Methods:** Dynamic functions of the class's instance
   - Invoke through the extended domain (**'ds'**) of the native DataFrame object
 
-
+```Python
     df = pd.read_excel(os.path.join(os.getcwd(), "data.xlsx"))
     df.ds.isnull("Column_Name")
-
+```
 
 - **Static functions** Static functions from the class's object
   - Invoke as a static function of pd_utils class
 
-
+```Python
     df = pd.read_excel(os.path.join(os.getcwd(), "data.xlsx"))
     dsx.isnull(df, "Column_Name")
-
+```
 ![xpvt](https://i.imgur.com/0NAN16i.png)
 
 
@@ -102,9 +103,9 @@ The methods in the module are only callable as the extended domain **'ml'** in t
 
 
 Calling a method in **"ml_workflow"**:
-    
+```Python
     df = pd.read_excel(os.path.join(os.getcwd(), "data.xlsx"))
     
     cols_categorical = df.ml.get_features_categorical()
-
+```
 

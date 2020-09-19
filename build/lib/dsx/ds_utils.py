@@ -15,7 +15,6 @@ try:
 	else:
 		# Else Not Imported in Jupyter Notebook or Lab
 		mpl.use("module://backend_interagg")
-		plt.ion()
 		print("Package loaded in Non-Notebook Mode | mpl.use('module://backend_interagg')")
 
 except:
@@ -25,18 +24,17 @@ except:
 	pass
 
 import matplotlib.pyplot as plt
-
 import numpy as np
 import seaborn as sns
 from joblib import dump, load
 from collections import Iterable
 from typing import Union
 import inspect
-if os.name != 'posix':
-	raise ImportError('posix compatibility required')
 
 
-sns.set_style('darkgrid')
+
+plt.style.use('fivethirtyeight')
+#sns.set_style('darkgrid')
 sns.set_context(context={'figure.figsize': (16,6)})
 
 
@@ -76,6 +74,7 @@ class dsx(object):
 	elif os.name == 'posix':
 		path_graphviz = '/mnt/c/Program Files (x86)/Graphviz2.38/bin/'
 
+
 	@property
 	def len(self):
 		return len(self._obj)
@@ -84,7 +83,7 @@ class dsx(object):
 	# endregion << Property >>
 
 
-	def stdcolumns(self, inplace=True, camel=False):
+	def stdcols(self, inplace=True, camel=False):
 		"""
 			To standardize the names of all columns, to be compatible with iPython.
 			This method removes space and special characterss in the column names.
@@ -122,7 +121,7 @@ class dsx(object):
 			return df
 
 
-	def meta(self):
+	def info(self):
 		"""
 		To generate the meta-data of the DataFrame.
 		Meta-data includes the following:
@@ -153,7 +152,7 @@ class dsx(object):
 		return cols_Df
 
 
-	def len_dups(self, colname_list: Union[str, list], return_dups=False, keep:bool=False) -> int:
+	def duplicated(self, colname_list: Union[str, list], return_dups=False, keep:bool=False) -> int:
 		"""
 		To count the duplicated rows, given a list of columns that contain the unique key.
 
@@ -880,122 +879,6 @@ class dsx(object):
 		return df.copy()
 
 
-	def to_xgrid(self, dir:str=None, convert:bool=False):
-		"""
-		To open viewer for visualizing the dataframe.
-
-		Parameters
-		----------
-		dir: str
-
-		Returns
-		-------
-		None
-		"""
-
-		import webbrowser
-		df = self._obj
-		if convert:
-			df = df.ds.cols_datetime_to_string()
-
-		jsonstr = df.to_json(orient='records')
-		f = open(".temp/data.js", "w")
-		f.write("var data = {};".format(jsonstr))
-		f.close()
-
-		if dir is None:
-			dir = os.getcwd()
-
-
-		webbrowser.get(dsx.path_chrome).open(os.path.join('file:///', dir, '.temp/xgrid.html'))
-
-
-	def to_xgrivot(self, dir=None, convert:bool=False):
-		"""
-		To open multi-purpose pivot-table & visualization tools for the dataframe.
-
-		Parameters
-		----------
-		dir: str
-
-		Returns
-		-------
-		None
-		"""
-		import webbrowser
-		df = self._obj
-		if convert:
-			df = df.ds.cols_datetime_to_string()
-
-		jsonstr = df.to_json(orient='records')
-		f = open(".temp/data.js", "w")
-		f.write("var data = {};".format(jsonstr))
-		f.close()
-
-		if dir is None:
-			dir = os.getcwd()
-
-		#chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-		webbrowser.get(dsx.path_chrome).open(os.path.join('file:///', dir, '.temp/xgrivot.html'))
-
-
-	def to_xpivot(self, dir=None, convert:bool=False):
-		"""
-		To open pivot table viewer with drill-down capability for the dataframe.
-
-		Parameters
-		----------
-		dir: str
-
-		Returns
-		-------
-		None
-		"""
-		import webbrowser
-		df = self._obj
-		if convert:
-			df = df.ds.cols_datetime_to_string()
-
-		jsonstr = df.to_json(orient='records')
-		f = open(".temp/data.js", "w")
-		f.write("var data = {};".format(jsonstr))
-		f.close()
-
-		if dir is None:
-			dir = os.getcwd()
-
-		#chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-		webbrowser.get(dsx.path_chrome).open(os.path.join('file:///', dir, '.temp/xpivot.html'))
-
-
-	def to_xbox(self, dir=None, convert:bool=True):
-		import webbrowser
-		df = self._obj
-		if convert:
-			df = df.ds.cols_datetime_to_string()
-
-		jsonstr = df.to_json(orient='records')
-		f = open(".temp/data.js", "w")
-		f.write("var data = {};".format(jsonstr))
-		f.close()
-
-		path_string = None
-		if os.name == 'nt':
-			if dir is None:
-				dir = os.path.join(os.getcwd(), '.temp/xbox.html')
-				path_string = 'file:///' + dir
-			else:
-				path_string = dir
-
-		else:
-			if dir is None:
-				path_string = '.temp/xbox.html'
-			else:
-				path_string = dir
-
-		webbrowser.get(dsx.path_chrome).open(path_string)
-
-
 	def to_vx(self, title=None, dir=None, convert:bool=True):
 		import webbrowser
 		df = self._obj
@@ -1007,13 +890,11 @@ class dsx(object):
 		else:
 			title = 'data'
 
-
 		# Writing data to disk
 		jsonstr = df.to_json(orient='records')
 		f = open(".temp/{}.js".format(title), "w")
 		f.write("var data = {};".format(jsonstr))
 		f.close()
-
 
 		path_string = None
 		if os.name == 'nt':
@@ -1037,15 +918,6 @@ class dsx(object):
 
 		webbrowser.get(dsx.path_chrome).open(path_string)
 
-
-	def xd(self, dir=None):
-		self._obj.ds.to_xgrid(dir=dir)
-
-	def xq(self, dir=None):
-		self._obj.ds.to_xgrivot(dir=dir)
-
-	def xv(self, dir=None):
-		self._obj.ds.to_xpivot(dir=dir)
 
 	def xb(self, new_name=None, dir=None, convert=True):
 		self._obj.ds.to_vx(new_name, dir=dir, convert=convert)
@@ -1393,21 +1265,20 @@ class dsx(object):
 		"""
 		cls.set_dirs(root=root)
 
-		folders = ['data', 'data/temp', 'data/inputs', 'data/outputs', 'notebooks']
+		folders = ['data', 'data/temp', 'data/inputs', 'data/outputs', 'notebooks', '.temp']
 		for folder in folders:
 			if os.path.exists(os.path.join(cls.dir_project, folder)) == False:
 				os.mkdir(os.path.join(cls.dir_project, folder))
 		print('Created project structure')
+
 
 		if get_xfiles:
 			os.mkdir(os.path.join(cls.dir_project, '.temp'))
 
 			os.chdir(cls.dir_temp)
 			import urllib
-			urllib.request.urlretrieve('https://nicdatalab.com/static/files/xgrid.html', 'xgrid.html')
-			urllib.request.urlretrieve('https://nicdatalab.com/static/files/xpivot.html', 'xpivot.html')
-			urllib.request.urlretrieve('https://nicdatalab.com/static/files/xgrivot.html', 'xgrivot.html')
-			urllib.request.urlretrieve('https://nicdatalab.com/static/files/xgrivot.css', 'xgrivot.css')
+			urllib.request.urlretrieve('https://selfhost/xgrid.html', 'xgrid.html')
+
 
 			os.chdir(cls.dir_project)
 			print('Downloaded xfiles')
@@ -1455,6 +1326,11 @@ class dsx(object):
 		print("%config InlineBackend.figure_format = 'retina'")
 		print("sns.set_style('darkgrid')")
 		print("sns.set_context(context={'figure.figsize': (16,9)})")
+		print(plt.style.use('fivethirtyeight'))
+
+	@staticmethod
+	def qgrid_config():
+		print("qgrid.set_grid_option('forceFitColumns', False)")
 
 
 if __name__ != '__main__':

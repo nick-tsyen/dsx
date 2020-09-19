@@ -9,22 +9,21 @@ README = (HERE / "README.md").read_text()
 
 
 setup(name='dsx',
-      version='0.9.3.0',
+      version='0.9.4.0',
       description='The utilities pack for data science and analytics task. '
 
                   'The core module ds_utils (Data Science Utilities) is designed to work with Pandas to simplify common tasks, '
 
                   'such as generating metadata for the dataframe, validating merged dataframe, and visualizing dataframe. ',
 
-      url='https://nicdatalab.ml/data-analytics/dsx',
+      url='https://dataninja.ml/data-analytics/dsx',
       download_url = 'https://github.com/NicTsyen/dsx',
 
       author='NicTsyen',
       author_email='support@nicdatalab.com',
       license='GNU GENERAL PUBLIC LICENSE',
 
-      install_requires=['joblib', 'seaborn', 'pandas', 'numpy', 'scipy', 'matplotlib', 'openpyxl',
-                        'regex', 'typing'],
+      install_requires=['joblib', 'seaborn', 'pandas', 'numpy', 'scipy', 'matplotlib', 'regex'],
 
       py_modules=['dsx.ds_utils', 'dsx.ml_utils'],
 
