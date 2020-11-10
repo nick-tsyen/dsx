@@ -879,6 +879,45 @@ class dsx(object):
 		return df.copy()
 
 
+	def hash(self, key:str, salt:str=None, parallel:bool=False, parallel_statusbar:bool=False, inplace=False):
+		"""
+		To hash an entire DataFrame
+
+		Parameters
+		----------
+		key: str
+		salt: str, optional
+		parallel: bool, optional
+		parallel_statusbar: bool, optional
+
+		Returns
+		-------
+		pd.core.frame.DataFrame
+		"""
+		df_input = self._obj.copy()
+		if inplace:
+			df = df_input
+		else:
+			df = df_input.copy()
+
+		from itsdangerous.url_safe import URLSafeSerializer
+		serializer = URLSafeSerializer(key, salt=salt)
+
+		if parallel:
+			from pandarallel import pandarallel
+			pandarallel.initialize(progress_bar=parallel_statusbar)
+			df = df.parallel_applymap(lambda x: serializer.dumps(x))
+		else:
+			df = df.applymap(serializer.dumps)
+
+		df.columns = [serializer.dumps(c) for c in df.columns.tolist()]
+
+		if inplace:
+			df_input = df.copy()
+		else:
+			return df
+
+
 	def to_vx(self, title=None, dir=None, convert:bool=True):
 		import webbrowser
 		df = self._obj
@@ -1331,6 +1370,25 @@ class dsx(object):
 	@staticmethod
 	def qgrid_config():
 		print("qgrid.set_grid_option('forceFitColumns', False)")
+
+
+	@staticmethod
+	def set_ipython(node_interactivity:str='last'):
+		"""
+		Set ast_node_interactivity in Ipython.core.InteractiveShell
+
+		Parameters
+		----------
+		node_interactivity: str, optional
+			Default is 'last'. DSX uses 'all' if kernel is detected.
+
+		Returns
+		---
+		None
+
+		"""
+		from IPython.core.interactiveshell import InteractiveShell
+		InteractiveShell.ast_node_interactivity = node_interactivity
 
 
 if __name__ != '__main__':
