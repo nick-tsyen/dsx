@@ -879,10 +879,11 @@ class dsx(object):
 		return df.copy()
 
 
-	def hash(self, key:str, salt:str=None, parallel:bool=False, parallel_statusbar:bool=False, inplace=False):
+	def hash(self, key:str, salt:str=None, reverse=False, parallel:bool=False, parallel_statusbar:bool=False, inplace=False):
 		"""
 		To hash an entire DataFrame
-
+		Requires itsdangerous package. Install using:
+			"pip install itsdangerous"
 		Parameters
 		----------
 		key: str
@@ -902,15 +903,19 @@ class dsx(object):
 
 		from itsdangerous.url_safe import URLSafeSerializer
 		serializer = URLSafeSerializer(key, salt=salt)
+		if reverse:
+			serializer_func = serializer.loads
+		else:
+			serializer_func = serializer.dumps
 
 		if parallel:
 			from pandarallel import pandarallel
 			pandarallel.initialize(progress_bar=parallel_statusbar)
-			df = df.parallel_applymap(lambda x: serializer.dumps(x))
+			df = df.parallel_applymap(lambda x: serializer_func(x))
 		else:
-			df = df.applymap(serializer.dumps)
+			df = df.applymap(serializer_func)
 
-		df.columns = [serializer.dumps(c) for c in df.columns.tolist()]
+		df.columns = [serializer_func(c) for c in df.columns.tolist()]
 
 		if inplace:
 			df_input = df.copy()
