@@ -1,7 +1,9 @@
+LICENSE.txt
 README.md
 setup.cfg
 setup.py
 dsx/__init__.py
+dsx/add_toc.py
 dsx/ds_utils.py
 dsx/ml_utils.py
 dsx.egg-info/PKG-INFO

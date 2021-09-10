@@ -4,11 +4,27 @@ import matplotlib as mpl
 import pandas as pd
 import warnings
 
+
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+from joblib import dump
+from collections import Iterable
+from typing import Union
+import inspect
+
+
+
 try:
 	ip = get_ipython()
 	if ip.has_trait('kernel'):
+		# To allow multiple outputs from one cell
 		from IPython.core.interactiveshell import InteractiveShell
 		InteractiveShell.ast_node_interactivity = "all"
+
+		# Pandas Table Config
 		pd.set_option('display.html.table_schema', True)
 		pd.set_option('display.max_rows', 250)
 		print("Package loaded in Notebook Mode")
@@ -19,23 +35,17 @@ try:
 
 except:
 	print('Kernel not detected. '
-	      'Please use interactive() static method in the class to use interactive mode.'
+	      'Please use dsx.set_ipython() static method in the class to use interactive mode.'
 	      'Interactive Mode is not recommended for scripts')
 	pass
 
-import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
-from joblib import dump, load
-from collections import Iterable
-from typing import Union
-import inspect
 
 
-
+# Matplotlib Config
 plt.style.use('fivethirtyeight')
+plt.rc('figure', figsize=(16,9))
 #sns.set_style('darkgrid')
-sns.set_context(context={'figure.figsize': (16,6)})
+#sns.set_context(context={'figure.figsize': (16,6)})
 
 
 @pd.api.extensions.register_dataframe_accessor("ds")
@@ -923,65 +933,117 @@ class dsx(object):
 			return df
 
 
-	def to_vx(self, title=None, dir=None, convert:bool=True):
-		import webbrowser
+	def to_xv(self, title=None, convert_time:bool=True, dirbase=None):
+		#import webbrowser
 		df = self._obj
-		if convert:
-			df = df.ds.cols_datetime_to_string()
+		if convert_time:
+			df = df.ds.cols_datetime_to_string(inplace=False)
 
-		if title is not None:
-			dsx._modify_vizfile(title, dir)
+		if title is None:
+			title = 'LabView'
+			html_filename = 'LabView'
 		else:
-			title = 'data'
+			html_filename = 'LabView_' + str(title)
 
 		# Writing data to disk
 		jsonstr = df.to_json(orient='records')
-		f = open(".temp/{}.js".format(title), "w")
-		f.write("var data = {};".format(jsonstr))
-		f.close()
-
-		path_string = None
-		if os.name == 'nt':
-			if dir is None:
-				if title == 'data':
-					title = 'xbox'
-
-				dir = os.path.join(os.getcwd(), '.temp/{}.html'.format(title))
-				path_string = 'file:///' + dir
-			else:
-				path_string = dir
-
-		else:
-			if dir is None:
-				if title == 'data':
-					title = 'xbox'
-
-				path_string = '.temp/{}.html'.format(title)
-			else:
-				path_string = dir
-
-		webbrowser.get(dsx.path_chrome).open(path_string)
+		data_var = "var data = {};".format(jsonstr)
 
 
-	def xb(self, new_name=None, dir=None, convert=True):
-		self._obj.ds.to_vx(new_name, dir=dir, convert=convert)
+		base_file = os.path.join(dirbase, 'xbase.html')
+		htmlfile = open(base_file, 'r')
+		htmlstring = htmlfile.read()
+		htmlfile.close()
+
+		# In the <script> tag which points to the external data.js
+		#htmlstring = htmlstring.replace('data.js', str(data_filename) + '.js', 1)
+		htmlstring = htmlstring.replace('LabView', str(title), 1)
+		htmlstring = htmlstring.replace('e="insert_data_here";', data_var, 1)
+
+
+		newfile = open(os.path.join(dirbase, html_filename + '.html'), 'w')
+		newfile.write(htmlstring)
+		newfile.close()
+		return html_filename
+		#webbrowser.get(dsx.path_chrome).open(path_string)
+
+
+	def xv(self, title=None, convert_time=True, width="100%", height="1200", dirbase="../_temp", **kwargs):
+		"""
+
+		Parameters
+		----------
+		title: str, Title for the new viewer file.
+
+		convert: bool, Convert datetime dtype to str for display.
+
+
+		Returns
+		-------
+
+		"""
+		from IPython.display import IFrame
+		viewer_filename = self._obj.ds.to_xv(title, convert_time=convert_time, dirbase=dirbase)
+		return IFrame(os.path.join(dirbase, (viewer_filename+'.html')), width=width, height=height)
 
 
 	@classmethod
-	def _modify_vizfile(cls, filename='data', dir_file=None):
+	def _insert_viz_data(cls, data_filename='data', viewer_filename=None, dir_file=None):
+		"""
+		A private classmethod for changing the data.js configuration in the js and the html files.
+
+		Parameters
+		----------
+		filename
+		dir_file
+
+		Returns
+		-------
+
+		"""
 		if dir_file is None:
-			dir_file = '.temp/xbox.html'
+			dir_file = '_temp/xbox.html'
 		htmlfile = open(dir_file, 'r')
 		htmlstring = htmlfile.read()
 		htmlfile.close()
 
-		htmlstring = htmlstring.replace('data.js', str(filename) + '.js', 1)
-		htmlstring = htmlstring.replace('title_to_replace', str(filename), 1)
-
-
+		# In the <script> tag which points to the external data.js
+		htmlstring = htmlstring.replace('data.js', str(data_filename) + '.js', 1)
+		htmlstring = htmlstring.replace('title_to_replace', str(data_filename), 1)
 
 		dir_name = os.path.dirname(dir_file)
-		newfile = open(os.path.join(dir_name, filename + '.html'), 'w')
+		newfile = open(os.path.join(dir_name, data_filename + '.html'), 'w')
+		newfile.write(htmlstring)
+		newfile.close()
+
+
+
+	@classmethod
+	def _modify_vizdatafile(cls, data_filename='data', viewer_filename=None, dir_file=None):
+		"""
+		A private classmethod for changing the data.js configuration in the js and the html files.
+
+		Parameters
+		----------
+		filename
+		dir_file
+
+		Returns
+		-------
+
+		"""
+		if dir_file is None:
+			dir_file = '_temp/xbox.html'
+		htmlfile = open(dir_file, 'r')
+		htmlstring = htmlfile.read()
+		htmlfile.close()
+
+		# In the <script> tag which points to the external data.js
+		htmlstring = htmlstring.replace('data.js', str(data_filename) + '.js', 1)
+		htmlstring = htmlstring.replace('title_to_replace', str(data_filename), 1)
+
+		dir_name = os.path.dirname(dir_file)
+		newfile = open(os.path.join(dir_name, data_filename + '.html'), 'w')
 		newfile.write(htmlstring)
 		newfile.close()
 
@@ -1285,7 +1347,7 @@ class dsx(object):
 
 		cls.dir_project = os.getcwd()
 		cls.dir_data = os.path.join(cls.dir_project, 'data')
-		cls.dir_temp = os.path.join(cls.dir_project, '.temp')
+		cls.dir_temp = os.path.join(cls.dir_project, '_temp')
 
 		print('Set project directory to {}.'.format(os.getcwd()))
 		print('Property "dir_%" enabled')
@@ -1307,25 +1369,26 @@ class dsx(object):
 		-------
 		None
 		"""
-		cls.set_dirs(root=root)
 
-		folders = ['data', 'data/temp', 'data/inputs', 'data/outputs', 'notebooks', '.temp']
+		folders = ['data', 'data/temp', 'data/inputs', 'data/outputs', 'notebooks', '_temp']
 		for folder in folders:
 			if os.path.exists(os.path.join(cls.dir_project, folder)) == False:
 				os.mkdir(os.path.join(cls.dir_project, folder))
 		print('Created project structure')
 
+		cls.set_dirs(root=root)
 
 		if get_xfiles:
-			os.mkdir(os.path.join(cls.dir_project, '.temp'))
+			os.mkdir(os.path.join(cls.dir_project, '_temp'))
 
 			os.chdir(cls.dir_temp)
-			import urllib
-			urllib.request.urlretrieve('https://selfhost/xgrid.html', 'xgrid.html')
+			if not os.path.exists('xbase.html'):
+				import urllib
+				urllib.request.urlretrieve('https://pastebin.com/2phkBuEF', 'xbase.html')
 
 
 			os.chdir(cls.dir_project)
-			print('Downloaded xfiles')
+			print('Downloaded Extra Files.')
 
 
 	@classmethod
@@ -1359,7 +1422,7 @@ class dsx(object):
 	@staticmethod
 	def matplotlib_config():
 		"""
-		Print matplotlib configuration
+		Print matplotlib configurations
 
 		Returns
 		-------
@@ -1368,9 +1431,10 @@ class dsx(object):
 		"""
 		print('%matplotlib inline')
 		print("%config InlineBackend.figure_format = 'retina'")
-		print("sns.set_style('darkgrid')")
+		print("sns.set_style('fivethirtyeight')")
+		print("plt.rc('figure', figsize=(16,9))")
 		print("sns.set_context(context={'figure.figsize': (16,9)})")
-		print(plt.style.use('fivethirtyeight'))
+		print("plt.style.use('fivethirtyeight')")
 
 	@staticmethod
 	def qgrid_config():

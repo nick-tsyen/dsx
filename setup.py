@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 
 setup(name='dsx',
-      version='0.9.4.2b',
+      version='0.9.4.5',
       description='The utilities pack for data science and analytics task. '
 
                   'The core module ds_utils (Data Science Utilities) is designed to work with Pandas to simplify common tasks, '
@@ -25,7 +25,7 @@ setup(name='dsx',
 
       install_requires=['joblib', 'seaborn', 'pandas', 'numpy', 'scipy', 'matplotlib', 'regex'],
 
-      py_modules=['dsx.ds_utils', 'dsx.ml_utils'],
+      py_modules=['dsx.ds_utils', 'dsx.ml_utils', 'dsx.add_toc'],
 
 
       classifiers=['Development Status :: 4 - Beta',
