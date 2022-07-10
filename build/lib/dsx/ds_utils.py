@@ -42,11 +42,10 @@ except:
 
 
 # Matplotlib Config
-plt.style.use('fivethirtyeight')
-plt.rc('figure', figsize=(16,9))
 #sns.set_style('darkgrid')
-#sns.set_context(context={'figure.figsize': (16,6)})
-
+sns.set_context(context={'figure.figsize': (16,9)})
+plt.rc('figure', figsize=(16,9))
+plt.style.use('fivethirtyeight')
 
 @pd.api.extensions.register_dataframe_accessor("ds")
 class dsx(object):
@@ -968,7 +967,7 @@ class dsx(object):
 		#webbrowser.get(dsx.path_chrome).open(path_string)
 
 
-	def xv(self, title=None, convert_time=True, width="100%", height="1200", dirbase="../_temp", **kwargs):
+	def xv(self, title=None, convert_time=True, width="100%", height="1200", dirhtml="../_temp", dirbase="_temp", **kwargs):
 		"""
 
 		Parameters
@@ -987,40 +986,11 @@ class dsx(object):
 		return IFrame(os.path.join(dirbase, (viewer_filename+'.html')), width=width, height=height)
 
 
-	@classmethod
-	def _insert_viz_data(cls, data_filename='data', viewer_filename=None, dir_file=None):
-		"""
-		A private classmethod for changing the data.js configuration in the js and the html files.
-
-		Parameters
-		----------
-		filename
-		dir_file
-
-		Returns
-		-------
-
-		"""
-		if dir_file is None:
-			dir_file = '_temp/xbox.html'
-		htmlfile = open(dir_file, 'r')
-		htmlstring = htmlfile.read()
-		htmlfile.close()
-
-		# In the <script> tag which points to the external data.js
-		htmlstring = htmlstring.replace('data.js', str(data_filename) + '.js', 1)
-		htmlstring = htmlstring.replace('title_to_replace', str(data_filename), 1)
-
-		dir_name = os.path.dirname(dir_file)
-		newfile = open(os.path.join(dir_name, data_filename + '.html'), 'w')
-		newfile.write(htmlstring)
-		newfile.close()
-
-
 
 	@classmethod
 	def _modify_vizdatafile(cls, data_filename='data', viewer_filename=None, dir_file=None):
 		"""
+		Depecirated Method
 		A private classmethod for changing the data.js configuration in the js and the html files.
 
 		Parameters
@@ -1384,7 +1354,7 @@ class dsx(object):
 			os.chdir(cls.dir_temp)
 			if not os.path.exists('xbase.html'):
 				import urllib
-				urllib.request.urlretrieve('https://pastebin.com/2phkBuEF', 'xbase.html')
+				urllib.request.urlretrieve('https://s3.ap-southeast-1.amazonaws.com/nictsyen/shared/xbase.html', 'xbase.html')
 
 
 			os.chdir(cls.dir_project)
@@ -1414,7 +1384,7 @@ class dsx(object):
 
 			if os.path.exists(cls.dir_temp):
 				shutil.rmtree(cls.dir_temp)
-				print('Deleted .temp')
+				print('Deleted _temp')
 		except:
 			print("Removed files. Directories may remain")
 
@@ -1431,7 +1401,7 @@ class dsx(object):
 		"""
 		print('%matplotlib inline')
 		print("%config InlineBackend.figure_format = 'retina'")
-		print("sns.set_style('fivethirtyeight')")
+		#print("sns.set_style('fivethirtyeight')")
 		print("plt.rc('figure', figsize=(16,9))")
 		print("sns.set_context(context={'figure.figsize': (16,9)})")
 		print("plt.style.use('fivethirtyeight')")

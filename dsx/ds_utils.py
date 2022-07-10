@@ -42,11 +42,10 @@ except:
 
 
 # Matplotlib Config
-plt.style.use('fivethirtyeight')
-plt.rc('figure', figsize=(16,9))
 #sns.set_style('darkgrid')
-#sns.set_context(context={'figure.figsize': (16,6)})
-
+sns.set_context(context={'figure.figsize': (16,9)})
+plt.rc('figure', figsize=(16,9))
+plt.style.use('fivethirtyeight')
 
 @pd.api.extensions.register_dataframe_accessor("ds")
 class dsx(object):
@@ -74,9 +73,9 @@ class dsx(object):
 
 	path_chrome = None
 	if os.name == 'nt':
-		path_chrome = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+		path_chrome = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
 	elif os.name == 'posix':
-		path_chrome = '/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe'
+		path_chrome = '/mnt/c/Program Files/Google/Chrome/Application/chrome.exe'
 
 	path_graphviz = None
 	if os.name == 'nt':
@@ -1151,7 +1150,7 @@ class dsx(object):
 
 
 	@staticmethod
-	def progress(iterable:Iterable, counter:int) -> str:
+	def progress(iterable: Iterable, counter: int) -> str:
 		"""
 		To return string template for the progress of a loop operation.
 
@@ -1325,7 +1324,7 @@ class dsx(object):
 
 
 	@classmethod
-	def setup_project(cls, root=True, get_xfiles=False, git_files=False):
+	def setup_project(cls, root=True, get_xfiles=False, xfiles_url=None, git_files=False):
 		"""
 		Setup project directories for new projects.
 		If the directories exist, will not be overwritten.
@@ -1340,6 +1339,10 @@ class dsx(object):
 		-------
 		None
 		"""
+		#cls.set_dirs(root=root)
+		cls.dir_project = os.getcwd()
+		cls.dir_data = os.path.join(cls.dir_project, 'data')
+		cls.dir_temp = os.path.join(cls.dir_project, '_temp')
 
 		folders = ['data', 'data/temp', 'data/inputs', 'data/outputs', 'notebooks', '_temp']
 		for folder in folders:
@@ -1347,7 +1350,6 @@ class dsx(object):
 				os.mkdir(os.path.join(cls.dir_project, folder))
 		print('Created project structure')
 
-		cls.set_dirs(root=root)
 
 		if get_xfiles:
 			os.mkdir(os.path.join(cls.dir_project, '_temp'))
@@ -1355,7 +1357,7 @@ class dsx(object):
 			os.chdir(cls.dir_temp)
 			if not os.path.exists('xbase.html'):
 				import urllib
-				urllib.request.urlretrieve('https://s3.ap-southeast-1.amazonaws.com/nictsyen/shared/xbase.html', 'xbase.html')
+				urllib.request.urlretrieve(xfiles_url, 'xbase.html')
 
 
 			os.chdir(cls.dir_project)

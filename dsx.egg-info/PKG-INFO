@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: dsx
-Version: 0.9.4.5
+Version: 0.9.5.0
 Summary: The utilities pack for data science and analytics task. The core module ds_utils (Data Science Utilities) is designed to work with Pandas to simplify common tasks, such as generating metadata for the dataframe, validating merged dataframe, and visualizing dataframe. 
 Home-page: https://dataninja.ml/data-analytics/dsx
 Author: NicTsyen
