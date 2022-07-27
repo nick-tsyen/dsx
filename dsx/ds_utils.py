@@ -3,13 +3,11 @@ import sys
 import matplotlib as mpl
 import pandas as pd
 import warnings
-
-
+# ---
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-
+# ---
 from joblib import dump
 from collections import Iterable
 from typing import Union
@@ -26,25 +24,22 @@ try:
 
 		# Pandas Table Config
 		pd.set_option('display.html.table_schema', True)
-		pd.set_option('display.max_rows', 250)
+		pd.set_option('display.max_rows', 25)
 		print("Package loaded in Notebook Mode")
 	else:
 		# Else Not Imported in Jupyter Notebook or Lab
 		mpl.use("module://backend_interagg")
 		print("Package loaded in Non-Notebook Mode | mpl.use('module://backend_interagg')")
 
-except:
-	print('Kernel not detected. '
-	      'Please use dsx.set_ipython() static method in the class to use interactive mode.'
-	      'Interactive Mode is not recommended for scripts')
-	pass
-
+except NameError:
+	print('Kernel not detected. \n'
+		  'Please use dsx.set_ipython() static method in the class to use interactive mode. \n'
+		  'Interactive Mode is not recommended for scripts.')
 
 
 # Matplotlib Config
-#sns.set_style('darkgrid')
-sns.set_context(context={'figure.figsize': (16,9)})
-plt.rc('figure', figsize=(16,9))
+sns.set_context(context={'figure.figsize': (16, 9)})
+plt.rc('figure', figsize=(16, 9))
 plt.style.use('fivethirtyeight')
 
 @pd.api.extensions.register_dataframe_accessor("ds")
@@ -71,28 +66,29 @@ class dsx(object):
 	dir_data = None
 	dir_temp = None
 
-	path_chrome = None
-	if os.name == 'nt':
-		path_chrome = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
-	elif os.name == 'posix':
-		path_chrome = '/mnt/c/Program Files/Google/Chrome/Application/chrome.exe'
+	# To-Do: Depreciate
+	# path_chrome = None
+	# if os.name == 'nt':
+	# 	path_chrome = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
+	# elif os.name == 'posix':
+	# 	path_chrome = '/mnt/c/Program Files/Google/Chrome/Application/chrome.exe'
+	#
+	# path_graphviz = None
+	# if os.name == 'nt':
+	# 	path_graphviz = 'C:/Program Files (x86)/Graphviz2.38/bin/'
+	# elif os.name == 'posix':
+	# 	path_graphviz = '/mnt/c/Program Files (x86)/Graphviz2.38/bin/'
 
-	path_graphviz = None
-	if os.name == 'nt':
-		path_graphviz = 'C:/Program Files (x86)/Graphviz2.38/bin/'
-	elif os.name == 'posix':
-		path_graphviz = '/mnt/c/Program Files (x86)/Graphviz2.38/bin/'
-
-
+	# region << Property >>
 	@property
+	# To-Do: Depreciate. Better practice to use .shape
 	def len(self):
 		return len(self._obj)
-
-
 	# endregion << Property >>
 
 
-	def stdcols(self, inplace=True, camel=False):
+	# region << columns operations >>
+	def cols_std(self, inplace=True, camel=False):
 		"""
 			To standardize the names of all columns, to be compatible with iPython.
 			This method removes space and special characterss in the column names.
@@ -185,7 +181,8 @@ class dsx(object):
 		df = self._obj
 		if return_dups:
 			dff = df[df.duplicated(subset=colname_list, keep=keep)]
-			return (len(dff), dff)
+			print(len(dff))
+			return (dff)
 		else:
 			return len(df[df.duplicated(subset=colname_list, keep=keep)])
 
@@ -249,7 +246,7 @@ class dsx(object):
 	def nunique(self, col_names_list=None) -> pd.core.frame.DataFrame:
 		"""
 		To generate:
-			1) the number of unqiue value
+			1) the number of unique values
 			2) the percentage of the unique value over the total records (or rows)
 
 		Parameters
@@ -262,7 +259,7 @@ class dsx(object):
 		pd.core.frame.DataFrame
 		"""
 		df_input = self._obj
-		if col_names_list == None:
+		if col_names_list is None:
 			col_names_list = df_input.columns.tolist()
 		if len(col_names_list) > 0:
 			fetcher = []
@@ -316,85 +313,6 @@ class dsx(object):
 		return (ci)
 
 
-	def cols_search(self, keywords_list:Union[str, list], method:str='any', case_sensitive=False) -> list:
-		"""
-		To search the columns of which its name contains the 'any' or 'all' the keywords.
-		Single string (str) can also be passed to the keywords_list.
-
-		Parameters
-		----------
-		keywords_list
-		method
-		case_sensitive
-
-		Returns
-		-------
-		list_of_column_names: list
-		"""
-		df = self._obj
-
-		if not isinstance(keywords_list, Iterable):
-			keywords_list = [keywords_list]
-		cols = df.columns.tolist().copy()
-
-		if not case_sensitive:
-			cols = [c.lower() for c in cols]
-			keywords_list = [k.lower() for k in keywords_list]
-			print("Non-CaseSensitive")
-
-		fetcher = []
-		if method == 'any':
-			for col in cols:
-				for kw in keywords_list:
-					if kw in col:
-						fetcher.append(col)
-						break
-		elif method == 'all':
-			for col in cols:
-				if all([kw in col for kw in keywords_list]):
-					fetcher.append(col)
-		return fetcher
-
-
-	def cols_contain(self, keyword, case_sensitive=False, columns=None, force_string=False):
-		"""
-		To search for column which its name contain the keyword specified.
-
-		Parameters
-		----------
-		keyword
-		case_sensitive
-		columns
-		force_string
-
-		Returns
-		-------
-
-		"""
-		df = self._obj.copy()
-
-		if columns is None:
-			columns = df.columns.tolist()
-
-		fetcher = []
-		for col in columns:
-			try:
-				if force_string:
-					df[col] = df[col].astype(str)
-
-				if not case_sensitive:
-					df[col] = df[col].str.lower()
-
-				status = df[col].str.contains(keyword)
-				status = status.any(axis='index')
-				fetcher.append([col, status])
-			except:
-				pass
-		fetcher = pd.DataFrame(fetcher, columns=['Column', 'Status'])
-		fetcher = fetcher[fetcher.Status == True]
-		return list(fetcher.Column)
-
-
 	def reset_index(self, index_label:str="RID", inplace:bool=True):
 		"""
 		To reset index and immediately rename the old 'index' to new index_label defined.
@@ -429,6 +347,7 @@ class dsx(object):
 	def cols_shift(self, col_names:Union[str, list], direction:Union[str, int]= 'right'):
 		"""
 		To shift a list of columns to the left-most or the right-most of the dataframe.
+		Note: there is no "inplace" for this method.
 
 		Parameters
 		----------
@@ -464,25 +383,6 @@ class dsx(object):
 
 		return df_input
 
-
-	def _split(self, col:str, sep:str, index_label:str="RID", drop_innerindex:bool=True):
-		'''
-		Function to be depreciated
-		'''
-		warnings.warn('Method to be depreciated', DeprecationWarning, stacklevel=2)
-		df = self._obj.copy()
-		if index_label is not None:
-			df = df[[index_label, col]].copy()
-			df.set_index(index_label, inplace=True)
-
-		df = df[col].str.split(sep, expand=True)
-		df = pd.DataFrame(df.stack()).reset_index()
-		df.columns = [index_label, 'InnerIndex', col]
-		df[col] = df[col].str.replace(sep, '')
-		df[col] = df[col].str.strip()
-		if drop_innerindex:
-			df.drop('InnerIndex', 'columns', inplace=True)
-		return df
 
 
 	def split(self, col:str, sep:str, index_label:str='RID',
@@ -749,33 +649,6 @@ class dsx(object):
 		print("Exported Excel File to " + dir)
 
 
-	def to_excel(self, filename: str, dir=None, extension='xlsx', index=True, index_label="RID", freeze_panes=(1,0)):
-		"""
-		Quick export to Excel. No file extension required.
-		Parameters
-		----------
-		filename
-		dir
-		extension
-		index
-		index_label
-		freeze_panes
-
-		Returns
-		-------
-		None
-		"""
-
-		if dir is None:
-			dir = self.dir_data
-
-		if index:
-			self._obj.to_excel(os.path.join(dir, filename + "." + extension), index=True, index_label=index_label, freeze_panes=freeze_panes)
-		else:
-			self._obj.to_excel(os.path.join(dir, filename + "." + extension), freeze_panes=freeze_panes)
-		print("Exported Excel File to " + dir)
-
-
 	def dump(self, path:str, compression_level:int=7):
 		"""
 		To dump DataFrame to the project's data/temp directory
@@ -801,51 +674,6 @@ class dsx(object):
 
 		dump(df, dir + ".df", compress=('gzip', compression_level))
 		print("Compressed dump created at " + os.path.dirname(dir) + " | filename = " + os.path.basename(dir + ".df"))
-
-
-	def to_excel_fast(self, filename, sheet_name='Sheet1', origin=(1, 1), columns=True, index=False):
-		"""
-		Write DataFrame to excel file using pyexelerate library. Fast writing, with data integrity traded-off
-		"""
-		import pyexcelerate
-
-		df = self._obj
-
-		if not isinstance(filename, pyexcelerate.Workbook):
-			location = filename
-			filename = pyexcelerate.Workbook()
-		else:
-			location = None
-		worksheet = filename.new_sheet(sheet_name)
-
-		# Account for space needed for index and column headers
-		column_offset = 0
-		row_offset = 0
-
-		if index:
-			index = df.index.tolist()
-			ro = origin[0] + row_offset
-			co = origin[1] + column_offset
-			worksheet.range((ro, co), (ro + 1, co)).value = [['Index']]
-			worksheet.range((ro + 1, co), (ro + 1 + len(index), co)).value = list(map(lambda x: [x], index))
-			column_offset += 1
-		if columns:
-			columns = df.columns.tolist()
-			ro = origin[0] + row_offset
-			co = origin[1] + column_offset
-			worksheet.range((ro, co), (ro, co + len(columns))).value = [[*columns]]
-			row_offset += 1
-
-		# Write the data
-		row_num = df.shape[0]
-		col_num = df.shape[1]
-		ro = origin[0] + row_offset
-		co = origin[1] + column_offset
-		worksheet.range((ro, co), (ro + row_num, co + col_num)).value = df.values.tolist()
-
-		if location:
-			filename.save(location)
-			print("Successfully exported to " + str(location))
 
 
 	def cols_datetime_to_string(self, inplace=False):
@@ -886,50 +714,6 @@ class dsx(object):
 			for col in df_types.colname:
 				df[col] = df[col].astype(str)
 		return df.copy()
-
-
-	def hash(self, key:str, salt:str=None, reverse=False, parallel:bool=False, parallel_statusbar:bool=False, inplace=False):
-		"""
-		To hash an entire DataFrame
-		Requires itsdangerous package. Install using:
-			"pip install itsdangerous"
-		Parameters
-		----------
-		key: str
-		salt: str, optional
-		parallel: bool, optional
-		parallel_statusbar: bool, optional
-
-		Returns
-		-------
-		pd.core.frame.DataFrame
-		"""
-		df_input = self._obj.copy()
-		if inplace:
-			df = df_input
-		else:
-			df = df_input.copy()
-
-		from itsdangerous.url_safe import URLSafeSerializer
-		serializer = URLSafeSerializer(key, salt=salt)
-		if reverse:
-			serializer_func = serializer.loads
-		else:
-			serializer_func = serializer.dumps
-
-		if parallel:
-			from pandarallel import pandarallel
-			pandarallel.initialize(progress_bar=parallel_statusbar)
-			df = df.parallel_applymap(lambda x: serializer_func(x))
-		else:
-			df = df.applymap(serializer_func)
-
-		df.columns = [serializer_func(c) for c in df.columns.tolist()]
-
-		if inplace:
-			df_input = df.copy()
-		else:
-			return df
 
 
 	def to_xv(self, title=None, convert_time:bool=True, dirbase=None):
@@ -1263,34 +1047,12 @@ class dsx(object):
 		-------
 		lolviz instance
 		"""
-
+		warnings.warn('This will be deprecated', PendingDeprecationWarning)
 		# lolviz_dir='C:/Program Files (x86)/Graphviz2.38/bin/'
 		import lolviz as lz
 		os.environ["PATH"] += os.pathsep + dsx.path_graphviz
 		print('Activate lolviz with path {}'.format(dsx.path_graphviz))
 		return lz
-
-
-	@classmethod
-	def set_path_chrome(cls, path_string:str):
-		"""
-		Set the path to web browser's (prefer: Chrome) executable
-		Returns
-		-------
-
-		"""
-		cls.path_chrome = path_string
-
-
-	@classmethod
-	def set_path_graphviz(cls, path_string:str):
-		"""
-		Set the path to Graphviz's executable
-		Returns
-		-------
-
-		"""
-		cls.path_graphviz = path_string
 
 
 	@classmethod
@@ -1404,7 +1166,7 @@ class dsx(object):
 		"""
 		print('%matplotlib inline')
 		print("%config InlineBackend.figure_format = 'retina'")
-		#print("sns.set_style('fivethirtyeight')")
+		print("sns.set_style('fivethirtyeight')")
 		print("plt.rc('figure', figsize=(16,9))")
 		print("sns.set_context(context={'figure.figsize': (16,9)})")
 		print("plt.style.use('fivethirtyeight')")
@@ -1431,6 +1193,11 @@ class dsx(object):
 		"""
 		from IPython.core.interactiveshell import InteractiveShell
 		InteractiveShell.ast_node_interactivity = node_interactivity
+
+	@staticmethod
+	def set_pandas_display(max_rows: int = 25):
+		pd.set_option('display.max_rows', max_rows)
+		print(f'Set "display.max_rows" as {max_rows}')
 
 
 if __name__ != '__main__':
