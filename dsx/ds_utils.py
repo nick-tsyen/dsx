@@ -141,20 +141,20 @@ class dsx(object):
 		pandas.core.frame.DataFrame
 		"""
 
-		cols_Df = pd.DataFrame(self._obj.columns.tolist())
-		cols_Df = cols_Df.reset_index()
-		cols_Df.columns = ['ColIndex', 'Col_Name']
+		df_cols = pd.DataFrame(self._obj.columns.tolist())
+		df_cols = df_cols.reset_index()
+		df_cols.columns = ['ColIndex', 'Col_Name']
 		report_missing = self.isnull_list()
-		cols_Df = cols_Df.merge(report_missing, 'left', 'Col_Name')
+		df_cols = df_cols.merge(report_missing, 'left', 'Col_Name')
 
 		report_nunique = self.nunique()
-		cols_Df = cols_Df.merge(report_nunique, 'left', 'Col_Name')
+		df_cols = df_cols.merge(report_nunique, 'left', 'Col_Name')
 
 		report_type = pd.DataFrame(self._obj.dtypes).reset_index()
 		report_type.columns = ['Col_Name', 'Data_Type']
 		report_type.Data_Type = report_type.Data_Type.map(lambda x: str(x))
-		cols_Df = cols_Df.merge(report_type, 'left', 'Col_Name')
-		return cols_Df
+		df_cols = df_cols.merge(report_type, 'left', 'Col_Name')
+		return df_cols
 
 
 	def duplicated(self, colname_list: Union[str, list], return_dups=False, keep:bool=False) -> int:
@@ -485,13 +485,17 @@ class dsx(object):
 		"""
 		df = self._obj
 
-		self.backup_repo['last'] = df.copy()
+		self.backup_repo['before_merge'] = df.copy()
 		if on is not None:
 			df = df.merge(right, how=how, on=on)
 		else:
 			df = df.merge(right, how=how, left_on=left_on, right_on=right_on)
 
-		print(self.len_compare(df, self.backup_repo['last']))
+		if len(df) != len(self.backup_repo['before_merge']):
+			warnings.warn("The resultant DataFrame is not the same length as before the merging operation.")
+		else:
+			print(dsx.len_compare(df, self.backup_repo['last']))
+
 		if isnull is not None:
 			print(df.ds.isnull(isnull))
 		return df
@@ -604,7 +608,8 @@ class dsx(object):
 		return innerTemp
 
 
-	def to_excel_exists(self, filepath_incl_extension, tab_name, index=False):
+	def _to_excel_exists(self, filepath_incl_extension, tab_name, index=False):
+		warnings.warn("This function is deprecated", DeprecationWarning)
 		"""
 		To insert a DataFrame into a new worksheet in an existing excel file.
 		The method use 'openpyxl' as the writer engine.
@@ -626,6 +631,27 @@ class dsx(object):
 		self._obj.to_excel(writer, sheet_name=tab_name)
 		writer.save()
 		writer.close()
+
+
+	def _to_excel_exists(self, filepath_incl_extension, tab_name, index=False):
+		"""
+		To insert a DataFrame into a new worksheet in an existing excel file.
+		The method use 'openpyxl' as the writer engine.
+
+		Parameters
+		----------
+		filepath_incl_extension: str
+		tab_name: str
+		index: bool
+
+		Returns
+		-------
+
+		"""
+		writer = pd.ExcelWriter(filepath_incl_extension, engine='xlsxwriter')
+		df = self._obj.copy()
+		df.to_excel(writer, sheet_name=tab_name)
+		writer.save()
 
 
 	def to_excel_stringify(self, dir=None, strings_to_urls_bool=False):

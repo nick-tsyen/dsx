@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 
 setup(name='dsx',
-      version='0.9.5.0',
+      version='0.9.5.1',
       description='The utilities pack for data science and analytics task. '
 
                   'The core module ds_utils (Data Science Utilities) is designed to work with Pandas to simplify common tasks, '
@@ -17,7 +17,7 @@ setup(name='dsx',
                   'such as generating metadata for the dataframe, validating merged dataframe, and visualizing dataframe. ',
 
       url='https://dataninja.ml/data-analytics/dsx',
-      download_url = 'https://github.com/NicTsyen/dsx',
+      download_url='https://github.com/NicTsyen/dsx',
 
       author='NicTsyen',
       author_email='nick@dataninja.ml',
@@ -33,7 +33,8 @@ setup(name='dsx',
                    'Programming Language :: Python :: 3',
                    'Programming Language :: Python :: 3.6',
                    'Programming Language :: Python :: 3.7',
-                   'Programming Language :: Python :: 3.8'],
+                   'Programming Language :: Python :: 3.8',
+                   'Programming Language :: Python :: 3.9'],
 
       long_description=README,
       long_description_content_type="text/markdown",

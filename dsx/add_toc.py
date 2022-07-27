@@ -1,6 +1,6 @@
 #!/bin/env python
 """
-This script takes a Jupyter notebook, and adds a table of contents at the top.
+This script takes a Jupyter notebook and adds a Tble of contents at the top.
 The TOC is added in a new markdown cell.
 The items appearing in the TOC are all the markdown headers of the notebook.
 
