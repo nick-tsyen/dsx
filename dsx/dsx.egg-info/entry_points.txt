@@ -1,0 +1,2 @@
+[console_scripts]
+add_toc = dsx.add_toc.__main__:main

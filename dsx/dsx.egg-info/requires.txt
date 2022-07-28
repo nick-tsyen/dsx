@@ -1,0 +1,12 @@
+joblib
+seaborn
+pandas
+numpy
+scipy
+matplotlib
+regex
+
+[dev]
+shutil
+xlsxwriter
+openpyxl

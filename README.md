@@ -21,7 +21,7 @@ The package can be can be used in the following setup:
 ```
 
 ## Documentation
-Full Documentation Site: [https://dataninja.ml/static/pages/docs_dsx/index.html](https://dataninja.ml/static/pages/docs_dsx/index.html)
+Full Documentation Site: [Documentation](http://docs-dsx.s3-website-ap-southeast-1.amazonaws.com/)
 
 
 ## 1. Core Module: "ds_utils"

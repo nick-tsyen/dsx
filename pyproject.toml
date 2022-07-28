@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dsx"
-version = "0.9.6"
+version = "0.9.7"
 description = "The utilities pack for data science and analytics tasks."
 license = {file = "LICENSE.txt"}
 readme = "README.md"
@@ -35,5 +35,3 @@ repository = "https://github.com/NicTsyen/dsx"
 
 [project.scripts]
 add_toc = "dsx.add_toc.__main__:main"
-
-# py_modules=['dsx.ds_utils', 'dsx.ml_utils', 'dsx.add_toc']
