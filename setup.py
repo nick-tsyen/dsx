@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 
 setup(name='dsx',
-      version='0.9.5.1',
+      version='0.9.5.2',
       description='The utilities pack for data science and analytics task. '
 
                   'The core module ds_utils (Data Science Utilities) is designed to work with Pandas to simplify common tasks, '

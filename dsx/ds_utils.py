@@ -88,7 +88,7 @@ class dsx(object):
 
 
 	# region << columns operations >>
-	def cols_std(self, inplace=True, camel=False):
+	def cols_std(self, inplace=True, lower=False):
 		"""
 			To standardize the names of all columns, to be compatible with iPython.
 			This method removes space and special characterss in the column names.
@@ -117,8 +117,8 @@ class dsx(object):
 		df.columns = df.columns.str.strip('_')
 		pat_Multi_Underscore = re.compile(r'[_]{2,}')
 		df.columns = df.columns.str.replace(pat_Multi_Underscore, '_')
-		if camel == True:
-			df.columns = df.columns.str.title()
+		if lower == True:
+			df.columns = df.columns.str.lower()
 
 		if inplace:
 			df_input = df.copy()
@@ -472,7 +472,8 @@ class dsx(object):
 		"""
 		To merge with another DataFrame.
 		A wrapper method for 'merge' in pandas, with additional checking mechanisms.
-		The mehtod also creates a backup of the original DataFrame with the key 'last' in dsx.backup_repo (dictionary).
+		The method also creates a backup of the original DataFrame
+		with the key 'before_merge' in dsx.backup_repo (dictionary).
 
 		Parameters
 		----------
@@ -494,7 +495,7 @@ class dsx(object):
 		if len(df) != len(self.backup_repo['before_merge']):
 			warnings.warn("The resultant DataFrame is not the same length as before the merging operation.")
 		else:
-			print(dsx.len_compare(df, self.backup_repo['last']))
+			print(dsx.len_compare(df, self.backup_repo['before_merge']))
 
 		if isnull is not None:
 			print(df.ds.isnull(isnull))
@@ -742,7 +743,7 @@ class dsx(object):
 		return df.copy()
 
 
-	def to_xv(self, title=None, convert_time:bool=True, dirbase=None):
+	def to_xv(self, title=None, convert_time:bool=True, dirbase="_temp"):
 		#import webbrowser
 		df = self._obj
 		if convert_time:
@@ -753,6 +754,7 @@ class dsx(object):
 			html_filename = 'LabView'
 		else:
 			html_filename = 'LabView_' + str(title)
+
 
 		# Writing data to disk
 		jsonstr = df.to_json(orient='records')
