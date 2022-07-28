@@ -1,0 +1,39 @@
+# pyproject.toml
+# Setuptools is moving toward using pyproject.toml as specified in PEP 621.
+
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dsx"
+version = "0.9.6"
+description = "The utilities pack for data science and analytics tasks."
+license = {file = "LICENSE.txt"}
+readme = "README.md"
+authors = [{ name = "NicTsyen", email = "nic.tsyen@outlook.com" }]
+
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["pandas", "utility"]
+dependencies = ['joblib', 'seaborn', 'pandas', 'numpy', 'scipy', 'matplotlib', 'regex']
+requires-python = ">=3.6"
+
+[project.optional-dependencies]
+dev = ["shutil", "xlsxwriter", "openpyxl"]
+
+
+[project.urls]
+homepage='https://github.com/NicTsyen/dsx'
+documentation ='https://dataninja.ml/data-analytics/dsx'
+repository = "https://github.com/NicTsyen/dsx"
+#changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
+
+[project.scripts]
+add_toc = "dsx.add_toc.__main__:main"
+
+# py_modules=['dsx.ds_utils', 'dsx.ml_utils', 'dsx.add_toc']

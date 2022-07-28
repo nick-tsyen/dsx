@@ -4,8 +4,9 @@ pandas
 numpy
 scipy
 matplotlib
-openpyxl
-datetime
 regex
-typing
-pyexcelerate
+
+[dev]
+shutil
+xlsxwriter
+openpyxl
