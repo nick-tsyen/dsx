@@ -5,16 +5,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Documentation: DataScience_Utils (dsx) &#8212; DataScience_Utils 0.9.2.6 documentation</title>
-    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -42,34 +42,31 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-dsx.ds_utils">
+  <section id="module-dsx.ds_utils">
 <span id="documentation-datascience-utils-dsx"></span><h1>Documentation: DataScience_Utils (dsx)<a class="headerlink" href="#module-dsx.ds_utils" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="dsx.ds_utils.dsx">
-<em class="property">class </em><code class="sig-prename descclassname">dsx.ds_utils.</code><code class="sig-name descname">dsx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pandas_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dsx.ds_utils.</span></span><span class="sig-name descname"><span class="pre">dsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pandas_obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <strong>dsx</strong> module (same name but not to confuse with the package name) contains a collection of wrapper functions to simplify common operations in data analytics tasks.
 The core module ds_utils (data science utilities) is designed to work with DataFrame in Pandas to simplify common tasks</p>
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.activate_lolviz">
-<em class="property">classmethod </em><code class="sig-name descname">activate_lolviz</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.activate_lolviz" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.activate_lolviz">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">activate_lolviz</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.activate_lolviz" title="Permalink to this definition">¶</a></dt>
 <dd><p>Import lolviz package as lz.
 Add graphviz directory to the os.environ[“path”].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>lolviz_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – </p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>lolviz instance</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>lolviz instance</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.backup">
-<em class="property">classmethod </em><code class="sig-name descname">backup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'last'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.backup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.backup">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'last'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.backup" title="Permalink to this definition">¶</a></dt>
 <dd><p>To backup the DataFrame or List (or any object with .copy() method)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -78,35 +75,29 @@ Add graphviz directory to the os.environ[“path”].</p>
 <li><p><strong>name</strong> – Name of the backup. To be used to retrieve the data.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.bk">
-<code class="sig-name descname">bk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bk_name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.bk" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.bk">
+<span class="sig-name descname"><span class="pre">bk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bk_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.bk" title="Permalink to this definition">¶</a></dt>
 <dd><p>To backup the dataframe.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>bk_name</strong> – </p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.ci">
-<code class="sig-name descname">ci</code><span class="sig-paren">(</span><em class="sig-param">col</em>, <em class="sig-param">n=1000</em>, <em class="sig-param">func=&lt;function mean&gt;</em>, <em class="sig-param">p=0.05</em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.ci" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.ci">
+<span class="sig-name descname"><span class="pre">ci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n=1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func=&lt;function</span> <span class="pre">mean&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p=0.05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.ci" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate ‘n’ bootstrap samples, evaluating <cite>func</cite> at each resampling.
 This method returns a function, which can be called to obtain confidence intervals of interest.
 :param n: sample size for the sampling distribution</p>
@@ -132,47 +123,10 @@ Return 2-sided symmetric confidence interval specified</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.cols_contain">
-<code class="sig-name descname">cols_contain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">keyword</span></em>, <em class="sig-param"><span class="n">case_sensitive</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">columns</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">force_string</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.cols_contain" title="Permalink to this definition">¶</a></dt>
-<dd><p>To search for column which its name contain the keyword specified.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>keyword</strong> – </p></li>
-<li><p><strong>case_sensitive</strong> – </p></li>
-<li><p><strong>columns</strong> – </p></li>
-<li><p><strong>force_string</strong> – </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.cols_search">
-<code class="sig-name descname">cols_search</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">keywords_list</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>list<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'any'</span></em>, <em class="sig-param"><span class="n">case_sensitive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#dsx.ds_utils.dsx.cols_search" title="Permalink to this definition">¶</a></dt>
-<dd><p>To search the columns of which its name contains the ‘any’ or ‘all’ the keywords.
-Single string (str) can also be passed to the keywords_list.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>keywords_list</strong> – </p></li>
-<li><p><strong>method</strong> – </p></li>
-<li><p><strong>case_sensitive</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>list_of_column_names</strong></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.cols_shift">
-<code class="sig-name descname">cols_shift</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">col_names</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>list<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">direction</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">'right'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.cols_shift" title="Permalink to this definition">¶</a></dt>
-<dd><p>To shift a list of columns to the left-most or the right-most of the dataframe.</p>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.cols_shift">
+<span class="sig-name descname"><span class="pre">cols_shift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'right'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.cols_shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>To shift a list of columns to the left-most or the right-most of the dataframe.
+Note: there is no “inplace” for this method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -192,526 +146,8 @@ int = 0 or 1</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.convert_dtypes">
-<code class="sig-name descname">convert_dtypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.convert_dtypes" title="Permalink to this definition">¶</a></dt>
-<dd><p>To convert dtypes to Pandas 1.0 dtypes and stringify object columns</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>pd.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.cumsum">
-<code class="sig-name descname">cumsum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">col_name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#dsx.ds_utils.dsx.cumsum" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>To generates the following using the unique values of a variable:
-- Count (Raw Count of Records)
-- Percentage of the values over the total data
-- Accumulated percentage of the values</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>col_name</strong> (<em>str</em>) – </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.del_tempfiles">
-<em class="property">classmethod </em><code class="sig-name descname">del_tempfiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tempdata</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.del_tempfiles" title="Permalink to this definition">¶</a></dt>
-<dd><p>Static method: To delete temporary files of the projects.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>tempdata</strong> (<em>bool</em><em>, </em><em>optional</em>) – Default is ‘False’. Set to ‘True’ to delete temporary data in ‘data/temp’ directory</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.delta_todate">
-<em class="property">static </em><code class="sig-name descname">delta_todate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_yyyyddd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.delta_todate" title="Permalink to this definition">¶</a></dt>
-<dd><p>To convert timedelta to date
-:param num_yyyyddd:</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>datetime.datetime</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.dump">
-<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">compression_level</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">7</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.dump" title="Permalink to this definition">¶</a></dt>
-<dd><p>To dump DataFrame to the project’s data/temp directory</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – </p></li>
-<li><p><strong>dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Default = data/temp</p></li>
-<li><p><strong>compression_level</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.duplicated">
-<code class="sig-name descname">duplicated</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colname_list</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>list<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">return_dups</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">keep</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#dsx.ds_utils.dsx.duplicated" title="Permalink to this definition">¶</a></dt>
-<dd><p>To count the duplicated rows, given a list of columns that contain the unique key.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>colname_list</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>list</em><em>]</em>) – </p></li>
-<li><p><strong>return_dups</strong> (<em>bool</em><em>, </em><em>optional</em>) – Default = False
-Set to True to return a tuple containing (count, df_duplicates).</p></li>
-<li><p><strong>keep</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>Number of Duplicated Rows</strong></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.get_dfname">
-<code class="sig-name descname">get_dfname</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">set</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.get_dfname" title="Permalink to this definition">¶</a></dt>
-<dd><p>To get name of the variable.</p>
-<p>Only work in iPython.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>var</strong> – </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>variable_name</strong></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.get_varname">
-<em class="property">static </em><code class="sig-name descname">get_varname</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var</span><span class="p">:</span> <span class="n">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.get_varname" title="Permalink to this definition">¶</a></dt>
-<dd><p>To get name of the variable.</p>
-<p>Only work in iPython.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>var</strong> – </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>variable_name</strong></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.hash">
-<code class="sig-name descname">hash</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">salt</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">parallel</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">parallel_statusbar</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.hash" title="Permalink to this definition">¶</a></dt>
-<dd><p>To hash an entire DataFrame</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> (<em>str</em>) – </p></li>
-<li><p><strong>salt</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
-<li><p><strong>parallel</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
-<li><p><strong>parallel_statusbar</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.info">
-<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.info" title="Permalink to this definition">¶</a></dt>
-<dd><p>To generate the meta-data of the DataFrame.
-Meta-data includes the following:
-- Column Names
-- Missing Count
-- Missing Percentage
-- Unique Value Count (nunique)
-- Unique Value Percentage</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>pandas.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.interactive">
-<em class="property">static </em><code class="sig-name descname">interactive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.interactive" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set InteractiveShell.ast_node_interactivity = “all”
-Set mpl.use(“module://backend_interagg”)
-Set plt.ion()</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.isnull">
-<code class="sig-name descname">isnull</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colname</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#dsx.ds_utils.dsx.isnull" title="Permalink to this definition">¶</a></dt>
-<dd><p>Count the rows (and the %) of missing values in the specified column</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>colname</strong> (<em>str</em>) – Single column name</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>(Count of Missing Rows, Percentage of Missing Rows)</strong></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.isnull_list">
-<code class="sig-name descname">isnull_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">col_names_list</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#dsx.ds_utils.dsx.isnull_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a report of cases with missing values</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>col_names_list</strong> (<em>list</em><em>, </em><em>optional</em>) – List of columns to be included in the report.
-If not specified, all columns will be used.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pandas.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.len_compare">
-<code class="sig-name descname">len_compare</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_to_compare</span></em>, <em class="sig-param"><span class="n">overwrite_df1</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#dsx.ds_utils.dsx.len_compare" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compare the length of two Dataframes (or any other enumeratable object)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df_to_compare</strong> – </p></li>
-<li><p><strong>overwrite_df1</strong> (<em>bool</em><em>, </em><em>optional</em>) – To ignore this instance of DataFrame and use the DataFrame in parameter as the copy to be compared.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.matplotlib_config">
-<em class="property">static </em><code class="sig-name descname">matplotlib_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.matplotlib_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Print matplotlib configuration</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>lines of texts</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.merge">
-<code class="sig-name descname">merge</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">right</span></em>, <em class="sig-param"><span class="n">how</span><span class="o">=</span><span class="default_value">'left'</span></em>, <em class="sig-param"><span class="n">on</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">left_on</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">right_on</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">isnull</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#dsx.ds_utils.dsx.merge" title="Permalink to this definition">¶</a></dt>
-<dd><p>To merge with another DataFrame.
-A wrapper method for ‘merge’ in pandas, with additional checking mechanisms.
-The mehtod also creates a backup of the original DataFrame with the key ‘last’ in dsx.backup_repo (dictionary).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>right</strong> (<em>pd.core.frame.DataFrame</em>) – </p></li>
-<li><p><strong>isnull</strong> (<em>str</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.nunique">
-<code class="sig-name descname">nunique</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">col_names_list</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#dsx.ds_utils.dsx.nunique" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>To generate:</dt><dd><ol class="arabic simple">
-<li><p>the number of unqiue value</p></li>
-<li><p>the percentage of the unique value over the total records (or rows)</p></li>
-</ol>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>col_names_list</strong> (<em>list</em>) – If not specified, all column names will be used</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.plt_labels">
-<em class="property">static </em><code class="sig-name descname">plt_labels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">percent</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">fontsize</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">denominator</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.plt_labels" title="Permalink to this definition">¶</a></dt>
-<dd><p>To insert label for each element in the current axes (last chart created).
-:param percent:
-:type percent: bool
-:param fontsize:
-:type fontsize: float
-:param color:
-:type color: str
-:param denominator:
-:type denominator: float</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.progress">
-<em class="property">static </em><code class="sig-name descname">progress</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">iterable</span><span class="p">:</span> <span class="n">collections.abc.Iterable</span></em>, <em class="sig-param"><span class="n">counter</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#dsx.ds_utils.dsx.progress" title="Permalink to this definition">¶</a></dt>
-<dd><p>To return string template for the progress of a loop operation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>iterable</strong> (<em>Iterable</em>) – </p></li>
-<li><p><strong>counter</strong> (<em>int</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.rename">
-<code class="sig-name descname">rename</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">col_index_or_name</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>int<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">col_name_new</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.rename" title="Permalink to this definition">¶</a></dt>
-<dd><p>To rename single column
-:param col_index_or_name:
-:param col_name_new:
-:param inplace:</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>renamed_DataFrame</strong> – Only if inplace is set to False.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>pd.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.reset_index">
-<code class="sig-name descname">reset_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index_label</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'RID'</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.reset_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>To reset index and immediately rename the old ‘index’ to new index_label defined.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>index_label</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
-<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>ONLY when inplace == False</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.restore">
-<em class="property">classmethod </em><code class="sig-name descname">restore</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'last'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.restore" title="Permalink to this definition">¶</a></dt>
-<dd><p>To restore the DataFrame or List (or any object with .copy() method)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> – DataFrame or List (or any object with .copy() method)</p></li>
-<li><p><strong>name</strong> – Name of the backup. To be used to retrieve the data.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Object</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.rs">
-<code class="sig-name descname">rs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bk_name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.rs" title="Permalink to this definition">¶</a></dt>
-<dd><p>To restore the dataframe.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>bk_name</strong> – </p></li>
-<li><p><strong>inplace</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pandas.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.set_dirs">
-<em class="property">classmethod </em><code class="sig-name descname">set_dirs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.set_dirs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the project root folder.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>root</strong> (<em>bool</em><em>, </em><em>optional</em>) – To indicate whether the current active directory is the root or sub-directory of the project</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.set_ipython">
-<em class="property">static </em><code class="sig-name descname">set_ipython</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_interactivity</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'last'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.set_ipython" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set ast_node_interactivity in Ipython.core.InteractiveShell</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>node_interactivity</strong> (<em>str</em><em>, </em><em>optional</em>) – Default is ‘last’. DSX uses ‘all’ if kernel is detected.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.set_path_chrome">
-<em class="property">classmethod </em><code class="sig-name descname">set_path_chrome</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path_string</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.set_path_chrome" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the path to web browser’s (prefer: Chrome) executable</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.set_path_graphviz">
-<em class="property">classmethod </em><code class="sig-name descname">set_path_graphviz</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path_string</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.set_path_graphviz" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the path to Graphviz’s executable</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.setup_project">
-<em class="property">classmethod </em><code class="sig-name descname">setup_project</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">get_xfiles</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">git_files</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.setup_project" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup project directories for new projects.
-If the directories exist, will not be overwritten.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>root</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
-<li><p><strong>get_xfiles</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
-<li><p><strong>git_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.split">
-<code class="sig-name descname">split</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">col</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">sep</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">index_label</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'RID'</span></em>, <em class="sig-param"><span class="n">drop_innerindex</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">reset_index_inplace</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.split" title="Permalink to this definition">¶</a></dt>
-<dd><p>To generate a DataFrame by splitting the values in a string, where the values are separated by a separator
-character.</p>
-<p>This method is improved upon the original split method in pandas. Where there is no separator in a row,
-the value will still be posted to the newly generated DataFrame as the outputs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>col</strong> (<em>str</em>) – </p></li>
-<li><p><strong>sep</strong> (<em>str</em>) – </p></li>
-<li><p><strong>index_label</strong> (<em>str</em>) – </p></li>
-<li><p><strong>drop_innerindex</strong> (<em>bool</em>) – </p></li>
-<li><p><strong>reset_index_inplace</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.core.frame.DataFrame</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dsx.ds_utils.dsx.stdcols">
-<code class="sig-name descname">stdcols</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">camel</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.stdcols" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.cols_std">
+<span class="sig-name descname"><span class="pre">cols_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.cols_std" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
 <div><p>To standardize the names of all columns, to be compatible with iPython.
 This method removes space and special characterss in the column names.
@@ -734,16 +170,28 @@ After standardized, the column names can be used as attribute of the DataFrame (
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.to_dict">
-<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key_col</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">val_col</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#dsx.ds_utils.dsx.to_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>To generate dictionary from two columns
-:param key_col:
-:type key_col: str
-:param val_col:
-:type val_col: str</p>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.convert_dtypes">
+<span class="sig-name descname"><span class="pre">convert_dtypes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.convert_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>To convert dtypes to Pandas 1.0 dtypes and stringify object columns</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.core.frame.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.cumsum">
+<span class="sig-name descname"><span class="pre">cumsum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#dsx.ds_utils.dsx.cumsum" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>To generates the following using the unique values of a variable:
+- Count (Raw Count of Records)
+- Percentage of the values over the total data
+- Accumulated percentage of the values</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col_name</strong> (<em>str</em>) – </p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>pd.core.frame.DataFrame</p>
@@ -752,18 +200,12 @@ After standardized, the column names can be used as attribute of the DataFrame (
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.to_excel">
-<code class="sig-name descname">to_excel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">extension</span><span class="o">=</span><span class="default_value">'xlsx'</span></em>, <em class="sig-param"><span class="n">index</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">index_label</span><span class="o">=</span><span class="default_value">'RID'</span></em>, <em class="sig-param"><span class="n">freeze_panes</span><span class="o">=</span><span class="default_value">1, 0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.to_excel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Quick export to Excel. No file extension required.
-:param filename:
-:param dir:
-:param extension:
-:param index:
-:param index_label:
-:param freeze_panes:</p>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.del_tempfiles">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">del_tempfiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tempdata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.del_tempfiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Static method: To delete temporary files of the projects.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tempdata</strong> (<em>bool</em><em>, </em><em>optional</em>) – Default is ‘False’. Set to ‘True’ to delete temporary data in ‘data/temp’ directory</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>None</p>
@@ -772,55 +214,450 @@ After standardized, the column names can be used as attribute of the DataFrame (
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.to_excel_exists">
-<code class="sig-name descname">to_excel_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath_incl_extension</span></em>, <em class="sig-param"><span class="n">tab_name</span></em>, <em class="sig-param"><span class="n">index</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.to_excel_exists" title="Permalink to this definition">¶</a></dt>
-<dd><p>To insert a DataFrame into a new worksheet in an existing excel file.
-The method use ‘openpyxl’ as the writer engine.</p>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.delta_todate">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delta_todate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_yyyyddd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.delta_todate" title="Permalink to this definition">¶</a></dt>
+<dd><p>To convert timedelta to date
+:param num_yyyyddd:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>datetime.datetime</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.dump">
+<span class="sig-name descname"><span class="pre">dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression_level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>To dump DataFrame to the project’s data/temp directory</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath_incl_extension</strong> (<em>str</em>) – </p></li>
-<li><p><strong>tab_name</strong> (<em>str</em>) – </p></li>
-<li><p><strong>index</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>path</strong> (<em>str</em>) – </p></li>
+<li><p><strong>dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Default = data/temp</p></li>
+<li><p><strong>compression_level</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.duplicated">
+<span class="sig-name descname"><span class="pre">duplicated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colname_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_dups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#dsx.ds_utils.dsx.duplicated" title="Permalink to this definition">¶</a></dt>
+<dd><p>To count the duplicated rows, given a list of columns that contain the unique key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>colname_list</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>list</em><em>]</em>) – </p></li>
+<li><p><strong>return_dups</strong> (<em>bool</em><em>, </em><em>optional</em>) – Default = False
+Set to True to return a tuple containing (count, df_duplicates).</p></li>
+<li><p><strong>keep</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>Number of Duplicated Rows</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.get_dfname">
+<span class="sig-name descname"><span class="pre">get_dfname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.get_dfname" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get name of the variable.</p>
+<p>Only work in iPython.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>var</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>variable_name</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.get_varname">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_varname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.get_varname" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get name of the variable.</p>
+<p>Only work in iPython.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>var</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>variable_name</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>To generate the meta-data of the DataFrame.
+Meta-data includes the following:
+- Column Names
+- Missing Count
+- Missing Percentage
+- Unique Value Count (nunique)
+- Unique Value Percentage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas.core.frame.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.interactive">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">interactive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.interactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set InteractiveShell.ast_node_interactivity = “all”
+Set mpl.use(“module://backend_interagg”)
+Set plt.ion()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.isnull">
+<span class="sig-name descname"><span class="pre">isnull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#dsx.ds_utils.dsx.isnull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Count the rows (and the %) of missing values in the specified column</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>colname</strong> (<em>str</em>) – Single column name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>(Count of Missing Rows, Percentage of Missing Rows)</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.isnull_list">
+<span class="sig-name descname"><span class="pre">isnull_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col_names_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#dsx.ds_utils.dsx.isnull_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a report of cases with missing values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col_names_list</strong> (<em>list</em><em>, </em><em>optional</em>) – List of columns to be included in the report.
+If not specified, all columns will be used.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pandas.core.frame.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.len_compare">
+<span class="sig-name descname"><span class="pre">len_compare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_to_compare</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite_df1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#dsx.ds_utils.dsx.len_compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare the length of two Dataframes (or any other enumeratable object)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_to_compare</strong> – </p></li>
+<li><p><strong>overwrite_df1</strong> (<em>bool</em><em>, </em><em>optional</em>) – To ignore this instance of DataFrame and use the DataFrame in parameter as the copy to be compared.</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.to_excel_fast">
-<code class="sig-name descname">to_excel_fast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">sheet_name</span><span class="o">=</span><span class="default_value">'Sheet1'</span></em>, <em class="sig-param"><span class="n">origin</span><span class="o">=</span><span class="default_value">1, 1</span></em>, <em class="sig-param"><span class="n">columns</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">index</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.to_excel_fast" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write DataFrame to excel file using pyexelerate library. Fast writing, with data integrity traded-off</p>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.matplotlib_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">matplotlib_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.matplotlib_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print matplotlib configurations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>lines of texts</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.to_excel_stringify">
-<code class="sig-name descname">to_excel_stringify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">strings_to_urls_bool</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.to_excel_stringify" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'left'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left_on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right_on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isnull</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#dsx.ds_utils.dsx.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>To merge with another DataFrame.
+A wrapper method for ‘merge’ in pandas, with additional checking mechanisms.
+The mehtod also creates a backup of the original DataFrame with the key ‘last’ in dsx.backup_repo (dictionary).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>right</strong> (<em>pd.core.frame.DataFrame</em>) – </p></li>
+<li><p><strong>isnull</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pd.core.frame.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.nunique">
+<span class="sig-name descname"><span class="pre">nunique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col_names_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#dsx.ds_utils.dsx.nunique" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>To generate:</dt><dd><ol class="arabic simple">
+<li><p>the number of unique values</p></li>
+<li><p>the percentage of the unique value over the total records (or rows)</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col_names_list</strong> (<em>list</em>) – If not specified, all column names will be used</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pd.core.frame.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.plt_labels">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plt_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.plt_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>To insert label for each element in the current axes (last chart created).
+:param percent:
+:type percent: bool
+:param fontsize:
+:type fontsize: float
+:param color:
+:type color: str
+:param denominator:
+:type denominator: float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.progress">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#dsx.ds_utils.dsx.progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>To return string template for the progress of a loop operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iterable</strong> (<em>Iterable</em>) – </p></li>
+<li><p><strong>counter</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.rename">
+<span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col_index_or_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_name_new</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.rename" title="Permalink to this definition">¶</a></dt>
+<dd><p>To rename single column
+:param col_index_or_name:
+:param col_name_new:
+:param inplace:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>renamed_DataFrame</strong> – Only if inplace is set to False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pd.core.frame.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.reset_index">
+<span class="sig-name descname"><span class="pre">reset_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RID'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.reset_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>To reset index and immediately rename the old ‘index’ to new index_label defined.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_label</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ONLY when inplace == False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.core.frame.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.restore">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">restore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'last'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.restore" title="Permalink to this definition">¶</a></dt>
+<dd><p>To restore the DataFrame or List (or any object with .copy() method)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – DataFrame or List (or any object with .copy() method)</p></li>
+<li><p><strong>name</strong> – Name of the backup. To be used to retrieve the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.rs">
+<span class="sig-name descname"><span class="pre">rs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bk_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.rs" title="Permalink to this definition">¶</a></dt>
+<dd><p>To restore the dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bk_name</strong> – </p></li>
+<li><p><strong>inplace</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pandas.core.frame.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.set_dirs">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_dirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.set_dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the project root folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>root</strong> (<em>bool</em><em>, </em><em>optional</em>) – To indicate whether the current active directory is the root or sub-directory of the project</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.set_ipython">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_ipython</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_interactivity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'last'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.set_ipython" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set ast_node_interactivity in Ipython.core.InteractiveShell</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node_interactivity</strong> (<em>str</em><em>, </em><em>optional</em>) – Default is ‘last’. DSX uses ‘all’ if kernel is detected.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.setup_project">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setup_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_xfiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfiles_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">git_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.setup_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup project directories for new projects.
+If the directories exist, will not be overwritten.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>get_xfiles</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>git_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.split">
+<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RID'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_innerindex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_index_inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.split" title="Permalink to this definition">¶</a></dt>
+<dd><p>To generate a DataFrame by splitting the values in a string, where the values are separated by a separator
+character.</p>
+<p>This method is improved upon the original split method in pandas. Where there is no separator in a row,
+the value will still be posted to the newly generated DataFrame as the outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>col</strong> (<em>str</em>) – </p></li>
+<li><p><strong>sep</strong> (<em>str</em>) – </p></li>
+<li><p><strong>index_label</strong> (<em>str</em>) – </p></li>
+<li><p><strong>drop_innerindex</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>reset_index_inplace</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pd.core.frame.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#dsx.ds_utils.dsx.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>To generate dictionary from two columns
+:param key_col:
+:type key_col: str
+:param val_col:
+:type val_col: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.core.frame.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.to_excel_stringify">
+<span class="sig-name descname"><span class="pre">to_excel_stringify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strings_to_urls_bool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.to_excel_stringify" title="Permalink to this definition">¶</a></dt>
 <dd><p>Faster option to export Excel File, with the option to stringify all hyperlinks in the table.
 :param dir:
 :param strings_to_urls_bool:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dsx.ds_utils.dsx.to_numeric">
-<em class="property">static </em><code class="sig-name descname">to_numeric</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inputString</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.to_numeric" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.to_numeric">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_numeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputString</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.to_numeric" title="Permalink to this definition">¶</a></dt>
 <dd><p>To convert string to numeric
 :param inputString:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dsx.ds_utils.dsx.xv">
+<span class="sig-name descname"><span class="pre">xv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'100%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1200'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirhtml</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../_temp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirbase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_temp'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dsx.ds_utils.dsx.xv" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>Title for the new viewer file.</em>) – </p></li>
+<li><p><strong>convert</strong> (<em>bool</em><em>, </em><em>Convert datetime dtype to str for display.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="indices-and-tables">
+</section>
+<section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -829,12 +666,14 @@ The method use ‘openpyxl’ as the writer engine.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Documentation: DataScience_Utils (dsx)</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -846,7 +685,7 @@ The method use ‘openpyxl’ as the writer engine.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -871,7 +710,7 @@ The method use ‘openpyxl’ as the writer engine.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, NicTsyen.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

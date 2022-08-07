@@ -1,0 +1,4 @@
+# MANIFEST.in
+
+exclude docs/*
+exclude doc_assets/*
