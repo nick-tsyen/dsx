@@ -1,0 +1,15 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+dsx/__init__.py
+dsx/__version__.py
+dsx/add_toc.py
+dsx/ds_utils.py
+dsx/ml_utils.py
+dsx.egg-info/PKG-INFO
+dsx.egg-info/SOURCES.txt
+dsx.egg-info/dependency_links.txt
+dsx.egg-info/entry_points.txt
+dsx.egg-info/requires.txt
+dsx.egg-info/top_level.txt

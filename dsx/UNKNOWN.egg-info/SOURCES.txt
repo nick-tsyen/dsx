@@ -1,0 +1,10 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+dsx/UNKNOWN.egg-info/PKG-INFO
+dsx/UNKNOWN.egg-info/SOURCES.txt
+dsx/UNKNOWN.egg-info/dependency_links.txt
+dsx/UNKNOWN.egg-info/top_level.txt
