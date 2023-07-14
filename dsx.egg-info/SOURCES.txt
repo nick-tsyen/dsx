@@ -6,6 +6,7 @@ dsx/__init__.py
 dsx/__version__.py
 dsx/add_toc.py
 dsx/ds_utils.py
+dsx/logging.py
 dsx/ml_utils.py
 dsx.egg-info/PKG-INFO
 dsx.egg-info/SOURCES.txt

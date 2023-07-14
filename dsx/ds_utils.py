@@ -9,7 +9,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 # ---
 from joblib import dump
-from collections import Iterable
+
+if sys.version_info.minor < 10:
+	from collections import Iterable
+else:
+	from collections.abc import Iterable
 from typing import Union
 import inspect
 
@@ -65,26 +69,6 @@ class dsx(object):
 	dir_project = None
 	dir_data = None
 	dir_temp = None
-
-	# To-Do: Depreciate
-	# path_chrome = None
-	# if os.name == 'nt':
-	# 	path_chrome = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
-	# elif os.name == 'posix':
-	# 	path_chrome = '/mnt/c/Program Files/Google/Chrome/Application/chrome.exe'
-	#
-	# path_graphviz = None
-	# if os.name == 'nt':
-	# 	path_graphviz = 'C:/Program Files (x86)/Graphviz2.38/bin/'
-	# elif os.name == 'posix':
-	# 	path_graphviz = '/mnt/c/Program Files (x86)/Graphviz2.38/bin/'
-
-	# region << Property >>
-	@property
-	# To-Do: Depreciate. Better practice to use .shape
-	def len(self):
-		return len(self._obj)
-	# endregion << Property >>
 
 
 	# region << columns operations >>
@@ -468,40 +452,6 @@ class dsx(object):
 			return df
 
 
-	def merge(self, right, how='left', on=None, left_on=None, right_on=None, isnull=None) -> pd.core.frame.DataFrame:
-		"""
-		To merge with another DataFrame.
-		A wrapper method for 'merge' in pandas, with additional checking mechanisms.
-		The method also creates a backup of the original DataFrame
-		with the key 'before_merge' in dsx.backup_repo (dictionary).
-
-		Parameters
-		----------
-		right: pd.core.frame.DataFrame
-		isnull: str
-
-		Returns
-		-------
-		pd.core.frame.DataFrame
-		"""
-		df = self._obj
-
-		self.backup_repo['before_merge'] = df.copy()
-		if on is not None:
-			df = df.merge(right, how=how, on=on)
-		else:
-			df = df.merge(right, how=how, left_on=left_on, right_on=right_on)
-
-		if len(df) != len(self.backup_repo['before_merge']):
-			warnings.warn("The resultant DataFrame is not the same length as before the merging operation.")
-		else:
-			print(dsx.len_compare(df, self.backup_repo['before_merge']))
-
-		if isnull is not None:
-			print(df.ds.isnull(isnull))
-		return df
-
-
 	def to_dict(self, key_col:str, val_col:str) -> pd.core.frame.DataFrame:
 		"""
 		To generate dictionary from two columns
@@ -558,31 +508,6 @@ class dsx(object):
 			return df
 
 
-	def len_compare(self, df_to_compare, overwrite_df1=None) -> tuple:
-		"""
-		Compare the length of two Dataframes (or any other enumeratable object)
-
-		Parameters
-		----------
-		df_to_compare:
-
-		overwrite_df1: bool, optional
-			To ignore this instance of DataFrame and use the DataFrame in parameter as the copy to be compared.
-
-		Returns
-		-------
-
-		"""
-		if overwrite_df1 is None:
-			df = self._obj
-		else:
-			df = overwrite_df1
-
-		if len(df) == len(df_to_compare):
-			return (True, len(df))
-		else:
-			return (False, len(df), len(df_to_compare))
-
 
 	def cumsum(self, col_name: str) -> pd.core.frame.DataFrame:
 		"""
@@ -608,30 +533,6 @@ class dsx(object):
 		innerTemp.columns = [col_name, 'Records_Count', 'Records_Percent', 'Accum_Percent']
 		return innerTemp
 
-
-	def _to_excel_exists(self, filepath_incl_extension, tab_name, index=False):
-		warnings.warn("This function is deprecated", DeprecationWarning)
-		"""
-		To insert a DataFrame into a new worksheet in an existing excel file.
-		The method use 'openpyxl' as the writer engine.
-
-		Parameters
-		----------
-		filepath_incl_extension: str
-		tab_name: str
-		index: bool
-
-		Returns
-		-------
-
-		"""
-		from openpyxl import load_workbook
-		book = load_workbook(filepath_incl_extension)
-		writer = pd.ExcelWriter(filepath_incl_extension, engine='openpyxl', index=index)
-		writer.book = book
-		self._obj.to_excel(writer, sheet_name=tab_name)
-		writer.save()
-		writer.close()
 
 
 	def _to_excel_exists(self, filepath_incl_extension, tab_name, index=False):
@@ -828,156 +729,6 @@ class dsx(object):
 		newfile = open(os.path.join(dir_name, data_filename + '.html'), 'w')
 		newfile.write(htmlstring)
 		newfile.close()
-
-
-
-	def bk(self, bk_name: str = None):
-		"""
-		To backup the dataframe.
-
-		Parameters
-		----------
-		bk_name
-
-		Returns
-		-------
-		None
-		"""
-		if bk_name is not None:
-			self.backup_repo[str(bk_name)] = self._obj.copy()
-		else:
-			try:
-				name = self._obj.ds.get_dfname()
-				self.backup_repo[str(name)] = self._obj.copy()
-			except:
-				next_index = len(self.backup_repo)
-				self.backup_repo["df_" + str(next_index)] = self._obj.copy()
-				self._obj.name = "df_" + str(next_index)
-				print("Backup to {:s}".format("df_" + str(next_index)))
-
-
-	def rs(self, bk_name: str = None, inplace=True):
-		"""
-		To restore the dataframe.
-
-		Parameters
-		----------
-		bk_name
-		inplace
-
-		Returns
-		-------
-		pandas.core.frame.DataFrame
-		"""
-		df = self._obj
-		if bk_name is not None:
-			df = self.backup_repo[str(bk_name)].copy()
-		else:
-			df = self.backup_repo[self._obj.name].copy()
-			print("Restored from {:s}".format(self._obj.name))
-		if not inplace:
-			return df
-
-
-	@classmethod
-	def backup(cls, df, name:str='last'):
-		"""
-		To backup the DataFrame or List (or any object with .copy() method)
-
-		Parameters
-		----------
-		df
-			DataFrame or List (or any object with .copy() method)
-
-		name
-			Name of the backup. To be used to retrieve the data.
-
-		Returns
-		-------
-		None
-		"""
-
-		cls.backup_repo [name] = df.copy()
-
-
-
-	@classmethod
-	def restore(cls, name:str='last'):
-		"""
-		To restore the DataFrame or List (or any object with .copy() method)
-
-		Parameters
-		----------
-		df
-			DataFrame or List (or any object with .copy() method)
-
-		name
-			Name of the backup. To be used to retrieve the data.
-
-		Returns
-		-------
-		Object
-		"""
-		if name is not None:
-			return cls.backup_repo[name].copy()
-		else:
-			return cls.backup_repo['last'].copy()
-
-
-
-	@staticmethod
-	def delta_todate(num_yyyyddd):
-		"""
-		To convert timedelta to date
-		Parameters
-		----------
-		num_yyyyddd
-
-		Returns
-		-------
-		datetime.datetime
-		"""
-		import datetime
-		str_yyddd = str(num_yyyyddd)
-		year = int(str_yyddd[:4])
-		baseDate = datetime.date(year, 1, 1)
-		days = int(str_yyddd[4:])
-		return baseDate + datetime.timedelta(days=days)
-
-
-	@staticmethod
-	def to_numeric(inputString):
-		"""
-		To convert string to numeric
-		Parameters
-		----------
-		inputString
-
-		Returns
-		-------
-
-		"""
-		numList = [x for x in inputString if x.isdigit()]
-		return ''.join(numList)
-
-
-	@staticmethod
-	def progress(iterable: Iterable, counter: int) -> str:
-		"""
-		To return string template for the progress of a loop operation.
-
-		Parameters
-		----------
-		iterable: Iterable
-		counter: int
-
-		Returns
-		-------
-		str
-		"""
-		progress = counter / len(iterable) * 100
-		return str("Processing record " + str(counter) + " over " + str(len(iterable)) + " | " + str(
-			np.round(progress, 4)) + '%')
 
 
 	def get_dfname(self, set=True):

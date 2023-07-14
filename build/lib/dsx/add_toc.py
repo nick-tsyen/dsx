@@ -1,6 +1,6 @@
 #!/bin/env python
 """
-This script takes a Jupyter notebook and adds a Tble of contents at the top.
+This script takes a Jupyter notebook and adds a Table of contents at the top.
 The TOC is added in a new markdown cell.
 The items appearing in the TOC are all the markdown headers of the notebook.
 
@@ -62,8 +62,13 @@ def write_toc(nb_name, headers):
         print("- inserting toc for {0}".format(nb_file))
         nb.cells.insert(0, new_markdown_cell(source=toc))
     nbformat.write(nb, nb_name)
-    
-if __name__=='__main__':
-    nb_name = sys.argv[1]
+
+def main(nb_name):
     headers = collect_headers(nb_name)
     write_toc(nb_name, headers)
+
+if __name__=='__main__':
+    nb_name = sys.argv[1]
+    main(nb_name)
+    # headers = collect_headers(nb_name)
+    # write_toc(nb_name, headers)

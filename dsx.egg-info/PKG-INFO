@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: dsx
-Version: 0.9.10.dev0
+Version: 0.9.11
 Summary: The utilities pack for data science and analytics tasks.
 Author-email: NicTsyen <nic.tsyen@outlook.com>
 Project-URL: homepage, https://github.com/NicTsyen/dsx
@@ -10,7 +10,7 @@ Keywords: pandas,utility
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python
 Classifier: Programming Language :: Python :: 3
-Requires-Python: >=3.8
+Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 Provides-Extra: dev
 License-File: LICENSE.txt

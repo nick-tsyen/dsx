@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dsx"
-version = "0.9.10dev"
+version = "0.9.11"
 description = "The utilities pack for data science and analytics tasks."
 license = {file = "BSD 3-Clause License"}
 readme = "README.md"
@@ -21,7 +21,7 @@ classifiers = [
 ]
 keywords = ["pandas", "utility"]
 dependencies = ['joblib', 'seaborn', 'pandas', 'numpy', 'scipy', 'matplotlib', 'regex']
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 
 [project.optional-dependencies]
 dev = ["shutil", "xlsxwriter", "openpyxl"]
@@ -42,8 +42,6 @@ packages = ["dsx"]
 # include = ["my_package*"]  # package names should match these glob patterns (["*"] by default)
 # exclude = ["my_package.tests*"]  # exclude packages matching these glob patterns (empty by default)
 #namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
-
-
 
 
 [project.scripts]
