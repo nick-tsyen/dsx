@@ -109,3 +109,8 @@ Calling a method in **"ml_workflow"**:
     cols_categorical = df.ml.get_features_categorical()
 ```
 
+
+# Build Command
+```
+python -m build
+```

@@ -1,0 +1,13 @@
+site_name: DSX Documentation
+
+nav:
+  - Home: index.md
+  - Code Reference: reference.md
+
+theme:
+  name: "material"
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
