@@ -11,3 +11,4 @@ plugins:
   - search
   - mkdocstrings:
       default_handler: python
+      show_source: false
